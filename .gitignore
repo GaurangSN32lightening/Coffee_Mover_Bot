@@ -1,0 +1,23 @@
+# ROS build artifacts
+build/
+devel/
+install/
+log/
+.catkin_workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
