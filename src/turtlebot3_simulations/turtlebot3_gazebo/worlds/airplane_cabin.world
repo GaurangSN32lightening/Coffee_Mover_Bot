@@ -1,0 +1,719 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="airplane_cabin">
+    
+    <!-- ========== PHYSICS SETTINGS ========== -->
+    <physics type="ode">
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+    </physics>
+    
+    <!-- ========== LIGHTING ========== -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    
+    <light name="cabin_light_1" type="point">
+      <pose>0 0 2.5 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+    </light>
+    
+    <!-- ========== GROUND PLANE ========== -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- ========== CABIN WALLS ========== -->
+    <!-- Left Wall -->
+    <model name="left_wall">
+      <static>true</static>
+      <pose>-1.75 0 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 10 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 10 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.95 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Right Wall -->
+    <model name="right_wall">
+      <static>true</static>
+      <pose>1.75 0 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.1 10 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.1 10 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.9 0.95 1</ambient>
+            <diffuse>0.9 0.9 0.95 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Front Wall (Cockpit) -->
+    <model name="front_wall">
+      <static>true</static>
+      <pose>0 5.0 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>3.5 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>3.5 0.1 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.4 1</ambient>
+            <diffuse>0.3 0.3 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Back Wall (Galley/Lavatory Area) -->
+    <model name="back_wall">
+      <static>true</static>
+      <pose>0 -5.0 1.0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>3.5 0.1 2.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>3.5 0.1 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.4 1</ambient>
+            <diffuse>0.3 0.3 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- ========== LEFT SIDE SEATS (ROWS 1-10) ========== -->
+    <model name="seat_row1_left">
+      <static>true</static>
+      <pose>-1.15 4.0 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row2_left">
+      <static>true</static>
+      <pose>-1.15 3.2 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row3_left">
+      <static>true</static>
+      <pose>-1.15 2.4 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row4_left">
+      <static>true</static>
+      <pose>-1.15 1.6 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row5_left">
+      <static>true</static>
+      <pose>-1.15 0.8 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row6_left">
+      <static>true</static>
+      <pose>-1.15 0.0 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row7_left">
+      <static>true</static>
+      <pose>-1.15 -0.8 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row8_left">
+      <static>true</static>
+      <pose>-1.15 -1.6 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row9_left">
+      <static>true</static>
+      <pose>-1.15 -2.4 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row10_left">
+      <static>true</static>
+      <pose>-1.15 -3.2 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- ========== RIGHT SIDE SEATS (ROWS 1-10) ========== -->
+    <model name="seat_row1_right">
+      <static>true</static>
+      <pose>1.15 4.0 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row2_right">
+      <static>true</static>
+      <pose>1.15 3.2 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row3_right">
+      <static>true</static>
+      <pose>1.15 2.4 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row4_right">
+      <static>true</static>
+      <pose>1.15 1.6 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row5_right">
+      <static>true</static>
+      <pose>1.15 0.8 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row6_right">
+      <static>true</static>
+      <pose>1.15 0.0 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row7_right">
+      <static>true</static>
+      <pose>1.15 -0.8 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row8_right">
+      <static>true</static>
+      <pose>1.15 -1.6 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row9_right">
+      <static>true</static>
+      <pose>1.15 -2.4 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="seat_row10_right">
+      <static>true</static>
+      <pose>1.15 -3.2 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.35 0.40 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.3 0.6 1</ambient>
+            <diffuse>0.2 0.3 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- ========== BACK AREA (GALLEY & LAVATORY) ========== -->
+    <model name="galley">
+      <static>true</static>
+      <pose>-0.9 -4.3 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.8 0.6 1.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.8 0.6 1.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.6 0.6 0.6 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="lavatory">
+      <static>true</static>
+      <pose>0.9 -4.3 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.8 0.6 1.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.8 0.6 1.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+  </world>
+</sdf>
